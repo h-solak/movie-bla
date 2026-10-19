@@ -42,17 +42,17 @@ if errorlevel 1 (
 sc query MongoDB >> "%LOG%" 2>&1
 
 rem ---- Install dependencies on first run ----
-if not exist node_modules (
+if not exist node_modules\vite\package.json (
   echo Installing frontend deps... >> "%LOG%"
   echo Installing frontend dependencies...
   call npm install >> "%LOG%" 2>&1
 )
-if not exist server\node_modules (
+if not exist server\node_modules\express\package.json (
   echo Installing server deps... >> "%LOG%"
   echo Installing server dependencies...
   pushd server & call npm install >> "%LOG%" 2>&1 & popd
 )
-if not exist socket\node_modules (
+if not exist socket\node_modules\socket.io\package.json (
   echo Installing socket deps... >> "%LOG%"
   echo Installing socket dependencies...
   pushd socket & call npm install >> "%LOG%" 2>&1 & popd
